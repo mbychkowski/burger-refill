@@ -1,0 +1,31 @@
+.no-col-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.col-one {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.col-two {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.col-three {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.no-col-one {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
