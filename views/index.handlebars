@@ -1,25 +1,29 @@
-<div class="contrainer">
+<div class="container">
 
-  <div class="no-col-one">
-    <div class="center">
+  <div class="row">
+    <div class="col-12 center">
       <h1>Burger Refill</h1>
     </div>
   </div>
   <!-- image here -->
 
-  <div class="no-col-three">
+  <div class="row">
 
-    <div class="col-one center">
+    <div class="col-4 center">
       <h2>Burgers available</h2>
 
       <ul>
-        <li>Burger 1</li>
-        <li>Burger 2</li>
-        <li>Burger 3</li>
+        {{#each burgers}}
+          {{#unless devoured}}
+            <li>
+              {{this.burger_name}}
+            </li>
+          {{/unless}}
+        {{/each}}
       </ul>
     </div>
 
-    <div class="col-two center">
+    <div class="col-4 center">
       <h2>Add a burger</h2>
 
       <form action="#">
@@ -28,13 +32,17 @@
         <button type="button" name="button">TEST</button>
     </div>
 
-    <div class="col-three center">
+    <div class="col-4 center">
       <h2>Burgers ate</h2>
 
       <ul>
-        <li>Burger 1</li>
-        <li>Burger 2</li>
-        <li>Burger 3</li>
+        {{#each burgers}}
+          {{#if devoured}}
+            <li>
+              {{this.burger_name}}
+            </li>
+          {{/if}}
+        {{/each}}
       </ul>
     </div>
 
