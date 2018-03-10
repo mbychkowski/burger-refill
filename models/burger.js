@@ -6,13 +6,13 @@ var burger = {
     orm.selectAll('burgers', function(result) {
       cb(result);
     });
-  }
+  },
 
   insert: function(cols, vals, cb) {
     orm.insertOne('burgers', cols, vals, function(result) {
       cb(result);
     });
-  }
+  },
 
   update: function(objColVals, condition, cb) {
     orm.updateOne('burgers', objColVals, condition, function(result) {

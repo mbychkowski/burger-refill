@@ -1,4 +1,4 @@
-var connection = require('../config/connection.js');
+var connection = require('./connection.js');
 
 // Helper function
 function printQuestionMark(num) {
@@ -35,13 +35,13 @@ function objToSql(ob) {
 var orm = {
   selectAll: function(tableInput, cb) {
     var queryString = 'SELECT * FROM ' + tableInput + ';';
-    connection.connect(queryString, function(err, result) {
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
-  }
+  },
 
   insertOne: function(table, cols, vals, cb) {
     var queryString  = 'INSERT INTO ' + table;
@@ -49,13 +49,13 @@ var orm = {
         queryString += 'VALUES';
         queryString += ' (' + printQuestionMark(vals.length) + ')';
 
-    connection.connect(queryString, vals, function(err, result) {
+    connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
-  }
+  },
 
   updateOne: function(table, objColVals, condition, cb) {
     var queryString  = 'UPDATE ' + table;
@@ -74,3 +74,5 @@ var orm = {
     });
   }
 }
+
+module.exports = orm;
