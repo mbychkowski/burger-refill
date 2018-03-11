@@ -4,5 +4,8 @@ li {
 
 .center {
     text-align: center;
-    border: 3px solid green;
+}
+
+.red-font {
+  color: #FF6C5E;
 }
