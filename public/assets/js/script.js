@@ -5,8 +5,14 @@ $(function() {
 
     event.preventDefault();
 
+    var burgerName = $('#burger-input').val().trim();
+    // validation for input
+    if (burgerName.length < 1) {
+      return;
+    }
+
     var newBurger = {
-      burger_name: $('#burger-input').val().trim(),
+      burger_name: burgerName,
       devoured: false
     };
 
