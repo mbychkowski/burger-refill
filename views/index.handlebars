@@ -4,7 +4,13 @@
     <div class="col-12 center">
       <h1>Burger Refill</h1>
 
-      <!-- image here -->
+      <svg width="400" height="250">
+          <rect x="50" y="200" width="300" height="50" style="fill:rgb(229,203,122)"/>
+          <rect x="50" y="150" width="300" height="50" style="fill:rgb(50,199,4)"/>
+          <rect x="50" y="100" width="300" height="50" style="fill:rgb(69,1,1)"/>
+          <rect x="50" y="50"  width="300" height="50" style="fill:rgb(236,53,33)"/>
+          <rect x="50" y="0"   width="300" height="50" style="fill:rgb(229,203,122)"/>
+      </svg>
 
     </div>
   </div>
@@ -19,6 +25,9 @@
           {{#unless devoured}}
             <li>
               {{this.burger_name}}
+              <button type="button" data-burger-id="{{this.id}}" class="btn btn-default btn-sm eat-burger">
+                <span class="fa fa-bars"></span>
+              </button>
             </li>
           {{/unless}}
         {{/each}}
@@ -43,6 +52,9 @@
           {{#if devoured}}
             <li>
               {{this.burger_name}}
+              <button type="button" data-burger-id="{{this.id}}" class="btn btn-default btn-sm remove-burger">
+                <span class="fa fa-times-circle"></span>
+              </button>
             </li>
           {{/if}}
         {{/each}}

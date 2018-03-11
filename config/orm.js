@@ -25,11 +25,12 @@ function objToSql(ob) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
       arr.push(key + "=" + value);
     }
   }
+  // translate array of strings to a single comma-separated string
+  console.log(arr.toString());
+  return arr.toString();
 }
 
 var orm = {
@@ -44,10 +45,10 @@ var orm = {
   },
 
   insertOne: function(table, cols, vals, cb) {
-    var queryString  = 'INSERT INTO ' + table;
-        queryString += ' (' + cols.toString() + ') ';
-        queryString += 'VALUES';
-        queryString += ' (' + printQuestionMark(vals.length) + ')';
+    var queryString = 'INSERT INTO ' + table;
+    queryString += ' (' + cols.toString() + ') ';
+    queryString += 'VALUES';
+    queryString += ' (' + printQuestionMark(vals.length) + ')';
 
     connection.query(queryString, vals, function(err, result) {
       if (err) {
@@ -58,13 +59,26 @@ var orm = {
   },
 
   updateOne: function(table, objColVals, condition, cb) {
-    var queryString  = 'UPDATE ' + table;
-        queryString += ' SET ';
-        queryString += objToSql(objColVals);
-        queryString += ' WHERE ';
-        queryString += condition;
+    var queryString = 'UPDATE ' + table;
+    queryString += ' SET ';
+    queryString += objToSql(objColVals);
+    queryString += ' WHERE ';
+    queryString += condition;
 
-    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+
+  delete: function(table, condition, cb) {
+    var queryString = 'DELETE FROM ' + table;
+    queryString += ' WHERE ';
+    queryString += condition;
+
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -73,6 +87,7 @@ var orm = {
       cb(result);
     });
   }
+
 }
 
 module.exports = orm;
