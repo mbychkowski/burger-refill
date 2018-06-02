@@ -1,8 +1,6 @@
 # <a name="https://rocky-wildwood-32693.herokuapp.com/"></a>Burger refill
 
-Burger refill is an application built as an exercise to better understand CRUD operations using a model-view-controller (MVC) architectural pattern.
-
-[Application](https://rocky-wildwood-32693.herokuapp.com/)
+[Burger refill](https://burger-refill.herokuapp.com/) is an application built as an exercise to better understand CRUD operations using a model-view-controller (MVC) architectural pattern.
 
 ## How to use
 The application itself is a *burger eating simulator*. The user can order a custom burger (`POST`), devour a burger (`PUT`), and trash a burger after eating (`DELETE`). The current available burgers from the database are displayed on application load (`GET`).
